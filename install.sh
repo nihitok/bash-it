@@ -9,24 +9,24 @@ cp $HOME/.bash_it/template/bash_profile.template.bash $HOME/.bash_profile
 
 echo "Copied the template .bash_profile into ~/.bash_profile, edit this file to customize bash-it"
 
-while true
-do
-  read -p "Do you use Jekyll? (If you don't know what Jekyll is, answer 'n') [Y/N] " RESP
-
-  case $RESP
-    in
-    [yY])
-      cp $HOME/.bash_it/template/jekyllconfig.template.bash $HOME/.jekyllconfig
-      echo "Copied the template .jekyllconfig into your home directory. Edit this file to customize bash-it for using the Jekyll plugins"
-      break
-      ;;
-    [nN])
-      break
-      ;;
-    *)
-      echo "Please enter Y or N"
-  esac
-done
+# while true
+# do
+#   read -p "Do you use Jekyll? (If you don't know what Jekyll is, answer 'n') [Y/N] " RESP
+# 
+#   case $RESP
+#     in
+#     [yY])
+#       cp $HOME/.bash_it/template/jekyllconfig.template.bash $HOME/.jekyllconfig
+#       echo "Copied the template .jekyllconfig into your home directory. Edit this file to customize bash-it for using the Jekyll plugins"
+#       break
+#       ;;
+#     [nN])
+#       break
+#       ;;
+#     *)
+#       echo "Please enter Y or N"
+#   esac
+# done
 
 function load_all() {
   file_type=$1
@@ -71,28 +71,32 @@ function load_some() {
     done
 }
 
-for type in "aliases" "plugins" "completion"
-do
-  while true
-  do
-    read -p "Would you like to enable all, some, or no $type? Some of these may make bash slower to start up (especially completion). (all/some/none) " RESP
-    case $RESP
-    in
-    some)
-      load_some $type
-      break
-      ;;
-    all)
-      load_all $type
-      break
-      ;;
-    none)
-      break
-      ;;
-    *)
-      echo "Unknown choice. Please enter some, all, or none"
-      continue
-      ;;
-    esac
-  done
-done
+load_all "aliases"
+# load_all "plugins"
+# load_all "completion"
+
+# for type in "aliases" "plugins" "completion"
+# do
+#   while true
+#   do
+#     read -p "Would you like to enable all, some, or no $type? Some of these may make bash slower to start up (especially completion). (all/some/none) " RESP
+#     case $RESP
+#     in
+#     some)
+#       load_some $type
+#       break
+#       ;;
+#     all)
+#       load_all $type
+#       break
+#       ;;
+#     none)
+#       break
+#       ;;
+#     *)
+#       echo "Unknown choice. Please enter some, all, or none"
+#       continue
+#       ;;
+#     esac
+#   done
+# done
